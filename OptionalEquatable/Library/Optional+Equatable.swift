@@ -36,19 +36,15 @@ import Foundation
  */
 public protocol OptionalConvertible {
   
-  /**
-   The wrapped value type.
-   */
+  /// The wrapped value type.
   associatedtype WrappedValueType
   
   /// The underlying optional value
   var optionalValue: WrappedValueType? { get }
-
-  /**
-   Whether or not the underlying value is `nil`
-   
-   - returns: `true` if the underlying value is `nil` or `false` otherwise
-   */
+  
+  /// Whether or not the underlying value is `nil`
+  ///
+  /// - returns: `true` if the underlying value is `nil` or `false` otherwise
   func isNilValue() -> Bool
 }
 
@@ -60,7 +56,6 @@ extension Optional: OptionalConvertible {
   /// Returns `self`
   public var optionalValue: WrappedValueType? { return self }
   
-  
   public func isNilValue() -> Bool {
     return self == nil
   }
@@ -69,7 +64,7 @@ extension Optional: OptionalConvertible {
 
 // MARK: - OptionalConvertible Equality
 
-public func ==<T: OptionalConvertible where T.WrappedValueType: Equatable>(lhs: T, rhs: T) -> Bool {
+public func ==<T: OptionalConvertible>(lhs: T, rhs: T) -> Bool where T.WrappedValueType: Equatable {
   
   if lhs.isNilValue() && rhs.isNilValue() { return true }  
   return lhs == rhs
@@ -82,7 +77,7 @@ public func ==(lhs: NSDictionary?, rhs: NSDictionary?) -> Bool {
   
   if lhs.isNilValue() && rhs.isNilValue() { return true }
   guard let lhs = lhs, let rhs = rhs else { return false }
-  return lhs.isEqualToDictionary(rhs as [NSObject : AnyObject])
+  return lhs.isEqual(to: rhs as! [AnyHashable: Any])
 }
 
 public func ==(lhs: Dictionary<String, AnyObject>?, rhs: Dictionary<String, AnyObject>?) -> Bool {

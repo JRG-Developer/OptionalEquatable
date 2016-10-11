@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.platform              = :ios
   s.ios.deployment_target = '8.0'
   s.name          = "OptionalEquatable"
-  s.version       = "0.1.0"
+  s.version       = "0.2.0"
   s.summary       = "OptionalEquatable makes optional conform to Equatable... Sorta. ;)"
   s.homepage      = "https://github.com/JRG-Developer/OptionalEquatable"
   s.license       = { :type => "MIT", :file => "LICENSE" }

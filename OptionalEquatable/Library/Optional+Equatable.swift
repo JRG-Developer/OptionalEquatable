@@ -80,6 +80,6 @@ public func ==(lhs: NSDictionary?, rhs: NSDictionary?) -> Bool {
   return lhs.isEqual(to: rhs as! [AnyHashable: Any])
 }
 
-public func ==(lhs: Dictionary<String, AnyObject>?, rhs: Dictionary<String, AnyObject>?) -> Bool {
+public func ==(lhs: Dictionary<String, Any>?, rhs: Dictionary<String, Any>?) -> Bool {
   return (lhs as NSDictionary?) == (rhs as NSDictionary?)
 }
